@@ -11,7 +11,7 @@ async function loadNavbar() {
   try {
 
     // FIXED PATH
-    const res = await fetch("../navbar/navbar.html");
+    const res = await fetch("navbar/navbar.html");
 
     if (!res.ok) {
       throw new Error("Navbar fetch failed");
