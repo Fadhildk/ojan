@@ -89,7 +89,7 @@ function initNavbar() {
 
   /* Active Link */
   const currentPage =
-    location.pathname.split("/").pop() || "home.html";
+    location.pathname.split("/").pop() || "index.html";
 
   nav.querySelectorAll(".ts-nav-link").forEach(link => {
 

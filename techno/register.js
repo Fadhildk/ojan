@@ -181,10 +181,6 @@ function validatePassword(input) {
     setInvalid(group, "MINIMUM 8 CHARACTERS REQUIRED");
     return false;
   }
-  if (!/[A-Za-z]/.test(val) || !/[0-9]/.test(val)) {
-    setInvalid(group, "PASSWORD MUST INCLUDE LETTERS AND NUMBERS");
-    return false;
-  }
   setValid(group);
   return true;
 }
@@ -261,24 +257,24 @@ function initFormSubmit() {
 
     loader?.classList.remove("active");
 
+    // Persist login state so the register page is disabled after success
+    localStorage.setItem("tsLoggedIn", "true");
+    localStorage.setItem("tsUserName", nameInput?.value.trim() || "");
+    localStorage.setItem("tsUserEmail", emailInput?.value.trim() || "");
+
     // Show success toast (showToast is from main.js)
     if (typeof showToast === "function") {
       showToast("Identity initialized. Welcome to TechnoSpace.");
     }
 
-    if (label) label.textContent = "IDENTITY_CREATED ✓";
-    btn.style.borderColor = "var(--ok)";
-    btn.style.color       = "var(--ok)";
+    if (label) label.textContent = "BACK TO HOME";
+    btn.style.borderColor = "var(--accent)";
+    btn.style.color       = "var(--accent)";
     btn.type = "button";
     btn.disabled = false;
 
     btn.addEventListener("click", () => {
-      location.href = "home.html";
+      location.href = "index.html";
     }, { once: true });
-
-    // Redirect back to Home after successful registration
-    setTimeout(() => {
-      location.href = "home.html";
-    }, 1500);
   });
 }
