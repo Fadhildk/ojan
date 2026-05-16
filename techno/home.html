@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechnoSpace — Evolve Your Digital Fortress</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Navbar styles FIRST, then global styles -->
+  <link rel="stylesheet" href="../navbar/style.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <!--
+    NAVBAR is injected here dynamically by script.js → loadNavbar()
+    which fetches navbar.html and prepends it to <body>.
+    If JS is unavailable, copy-paste navbar.html content here directly.
+  -->
+
+  <div class="ts-page-wrap">
+
+    <!-- ══════════════════ HERO SECTION ══════════════════ -->
+<section class="ts-hero" aria-label="Hero">
+
+  <!-- SLIDE 1 -->
+  <div class="ts-hero-slide active">
+
+    <div class="ts-hero__bg"
+      style="
+      background-image:
+      linear-gradient(to right,
+      rgba(10,11,13,0.92) 45%,
+      rgba(10,11,13,0.4) 100%),
+      url('setup.png');
+    ">
+    </div>
+
+    <div class="ts-hero__content">
+      <div class="ts-hero__tag">SYSTEM READY : V.2.04</div>
+
+      <h1 class="ts-hero__title">
+        EVOLVE YOUR
+        <span class="ts-accent">DIGITAL FORTRESS</span>
+      </h1>
+
+      <p class="ts-hero__desc">
+        Premium-grade peripherals and liquid-cooled hardware engineered
+        for the next generation of performance.
+      </p>
+
+      <div class="ts-hero__actions">
+        <a href="shop.html" class="ts-btn ts-btn--primary">
+          Browse Inventory
+        </a>
+
+        <a href="register.html" class="ts-btn ts-btn--outline">
+          Custom Config
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="ts-hero-slide">
+
+    <div class="ts-hero__bg"
+      style="
+      background-image:
+      linear-gradient(to right,
+      rgba(10,11,13,0.92) 45%,
+      rgba(10,11,13,0.4) 100%),
+      url('mechanical.png');
+    ">
+    </div>
+
+    <div class="ts-hero__content">
+      <div class="ts-hero__tag">LIMITED DROP</div>
+
+      <h1 class="ts-hero__title">
+        MECHANICAL
+        <span class="ts-accent">KEYBOARD SERIES</span>
+      </h1>
+
+      <p class="ts-hero__desc">
+        Ultra-responsive switches with RGB tactical lighting
+        designed for elite gaming performance.
+      </p>
+
+      <div class="ts-hero__actions">
+        <a href="shop.html" class="ts-btn ts-btn--primary">
+          Shop Keyboards
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="ts-hero-slide">
+
+    <div class="ts-hero__bg"
+      style="
+      background-image:
+      linear-gradient(to right,
+      rgba(10,11,13,0.92) 45%,
+      rgba(10,11,13,0.4) 100%),
+      url('wireless.png');
+    ">
+    </div>
+
+    <div class="ts-hero__content">
+      <div class="ts-hero__tag">NEW ARRIVAL</div>
+
+      <h1 class="ts-hero__title">
+        PRECISION
+        <span class="ts-accent">WIRELESS MOUSE</span>
+      </h1>
+
+      <p class="ts-hero__desc">
+        Experience zero-latency tracking with futuristic
+        ergonomic design and customizable DPI modes.
+      </p>
+
+      <div class="ts-hero__actions">
+        <a href="shop.html" class="ts-btn ts-btn--primary">
+          Explore Collection
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LEFT -->
+  <button class="ts-hero__arrow ts-hero__arrow--prev">
+    &#8249;
+  </button>
+
+  <!-- RIGHT -->
+  <button class="ts-hero__arrow ts-hero__arrow--next">
+    &#8250;
+  </button>
+
+  <!-- DOTS -->
+  <div class="ts-hero__dots">
+    <div class="ts-dot active"></div>
+    <div class="ts-dot"></div>
+    <div class="ts-dot"></div>
+  </div>
+
+</section>
+
+    <!-- ══════════════════ FEATURES STRIP ══════════════════ -->
+    <section class="ts-features" aria-label="Features">
+      <div class="ts-features__grid" style="max-width:1280px; margin:0 auto;">
+
+        <!-- Fast Shipping -->
+        <div class="ts-feature-card">
+          <svg class="ts-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <h3>Fast Shipping</h3>
+          <p>Instant dispatch via secure logistics corridors. Global arrival within 48 cycles.</p>
+          <span class="ts-status">Status: Accelerated</span>
+        </div>
+
+        <!-- Custom Builds -->
+        <div class="ts-feature-card">
+          <svg class="ts-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/>
+            <circle cx="5"  cy="5" r="1"/><circle cx="5"  cy="12" r="1"/><circle cx="5"  cy="19" r="1"/>
+            <circle cx="19" cy="5" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="19" cy="19" r="1"/>
+          </svg>
+          <h3>Custom Builds</h3>
+          <p>Bespoke hardware integration. Hand-crafted setups tailored to your specific neural profile.</p>
+          <span class="ts-status">Status: Active</span>
+        </div>
+
+        <!-- 24/7 Tech Support -->
+        <div class="ts-feature-card">
+          <svg class="ts-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
+          <h3>24/7 Tech Support</h3>
+          <p>Live system diagnostics and repair advice from our elite tactical support core.</p>
+          <span class="ts-status">Status: Online</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ BEST SELLERS ══════════════════ -->
+    <section aria-label="Best Sellers">
+      <div class="ts-section">
+
+        <div class="ts-sellers-header">
+          <div>
+            <div class="ts-label">Featured Gear</div>
+            <h2 class="ts-heading ts-heading--lg">Best Sellers</h2>
+          </div>
+          <a href="shop.html">View All Hardware &#8594;</a>
+        </div>
+
+        <div class="ts-product-grid">
+
+          <!-- Product 1 -->
+          <div class="ts-product-card" data-product-id="KB-780">
+            <div class="ts-product-card__serial">S/N: KB-780</div>
+            <img
+              src="keyboard.png"
+              alt="Nova-X Mechanical Grid"
+              class="ts-product-card__img"
+              loading="lazy">
+            <div class="ts-product-card__body">
+              <div class="ts-product-card__name">Nova-X Mechanical Grid</div>
+              <div class="ts-product-card__pricing">
+                <span class="ts-product-card__price">$189.00</span>
+                <span class="ts-stock-badge ts-stock-badge--high">Stock: High</span>
+              </div>
+              <button class="ts-product-card__btn">View Details</button>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="ts-product-card" data-product-id="MS-042">
+            <div class="ts-product-card__serial">S/N: MS-042</div>
+            <img
+              src="mouse.png"
+              alt="Phantom-Pro Wireless"
+              class="ts-product-card__img"
+              loading="lazy">
+            <div class="ts-product-card__body">
+              <div class="ts-product-card__name">Phantom-Pro Wireless</div>
+              <div class="ts-product-card__pricing">
+                <span class="ts-product-card__price">$125.00</span>
+                <span class="ts-stock-badge ts-stock-badge--limited">Limited</span>
+              </div>
+              <button class="ts-product-card__btn">View Details</button>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="ts-product-card" data-product-id="KB-992">
+            <div class="ts-product-card__serial">S/N: KB-992</div>
+            <img
+              src="whitekeyboard.png"
+              alt="CyberKeys Custom Core"
+              class="ts-product-card__img"
+              loading="lazy">
+            <div class="ts-product-card__body">
+              <div class="ts-product-card__name">CyberKeys Custom Core</div>
+              <div class="ts-product-card__pricing">
+                <span class="ts-product-card__price">$215.00</span>
+                <span class="ts-stock-badge ts-stock-badge--preorder">Pre-Order</span>
+              </div>
+              <button class="ts-product-card__btn">View Details</button>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="ts-product-card" data-product-id="PD-220">
+            <div class="ts-product-card__serial">S/N: PD-220</div>
+            <img
+              src="mousergb.png"
+              alt="Vector Surface RGB"
+              class="ts-product-card__img"
+              loading="lazy">
+            <div class="ts-product-card__body">
+              <div class="ts-product-card__name">Vector Surface RGB</div>
+              <div class="ts-product-card__pricing">
+                <span class="ts-product-card__price">$55.00</span>
+                <span class="ts-stock-badge ts-stock-badge--instock">In Stock</span>
+              </div>
+              <button class="ts-product-card__btn">View Details</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ NEWSLETTER ══════════════════ -->
+    <section class="ts-newsletter" aria-label="Newsletter">
+      <h2>Join the Tech Core</h2>
+      <p>Subscribe for exclusive system updates, early access to limited hardware drops, and technical bulletins.</p>
+      <div class="ts-newsletter-form" role="form" aria-label="Newsletter signup">
+        <input
+          type="email"
+          class="ts-newsletter-input"
+          placeholder="Enter neural link (email)"
+          aria-label="Email address">
+        <button class="ts-newsletter-btn" type="button">Connect</button>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FOOTER ══════════════════ -->
+    <footer class="ts-footer" aria-label="Footer">
+      <div class="ts-footer__inner">
+        <div class="ts-footer__logo">TechnoSpace</div>
+
+        <nav class="ts-footer__links" aria-label="Footer navigation">
+          <a href="shop.html">Hardware</a>
+          <a href="#">Support</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </nav>
+
+        <div class="ts-footer__copy">© 2024 TechnoSpace. All Systems Operational.</div>
+      </div>
+    </footer>
+
+  </div><!-- /.ts-page-wrap -->
+
+  <!-- Main Script (loads navbar + boots all features) -->
+  <script src="home.js"></script>
+</body>
+</html>

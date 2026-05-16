@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechnoSpace — Evolve Your Digital Fortress</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Navbar styles FIRST, then global styles -->
+  <link rel="stylesheet" href="../navbar/style.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+  <main class="shop-main">
+
+    <!-- ── Category Switcher ─────────────────────────── -->
+    <div class="category-switcher" id="categorySwitcher">
+      <button class="cat-btn active" data-category="keyboards">
+        <span class="cat-icon">⌨</span> KEYBOARDS
+      </button>
+      <button class="cat-btn" data-category="mice">
+        <span class="cat-icon">🖱</span> MOUSE
+      </button>
+      <button class="cat-btn" data-category="headsets">
+        <span class="cat-icon">🎧</span> HEADSETS
+      </button>
+      <button class="cat-btn" data-category="monitors">
+        <span class="cat-icon">🖥</span> MONITORS
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         PAGE: KEYBOARDS
+         ══════════════════════════════════════════════════ -->
+    <section class="shop-page active" id="page-keyboards">
+
+      <div class="page-header">
+        <div class="breadcrumb">HARDWARE CATALOG / 001</div>
+        <h1 class="page-title">CYBERNETIC KEYBOARDS</h1>
+        <p class="page-desc">Precision-engineered mechanical interfaces designed for the next generation of digital operators. Hot-swappable, fully programmable, and illuminated by pure neon.</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-bar" data-filter-group="keyboards">
+        <button class="filter-btn active" data-filter="all">ALL_MODELS</button>
+        <button class="filter-btn" data-filter="65">65%_LAYOUT</button>
+        <button class="filter-btn" data-filter="tkl">TKL_CORE</button>
+        <button class="filter-btn" data-filter="pcb">CUSTOM_PCBS</button>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="kbGrid">
+
+        <article class="product-card" data-tags="tkl hot-swap linear">
+          <div class="card-header">
+            <span class="serial">S/N: CK-0042-X</span>
+            <span class="badge badge--stock">IN_STOCK</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img" style="background-image:url('keyboard-01.png')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">CyberKeys TKL</h2>
+              <span class="prod-price">Rp 189.000</span>
+            </div>
+            <p class="prod-desc">Ultra-responsive tenkeyless board with aluminum frame and hotswap sockets.</p>
+            <div class="tag-row">
+              <span class="tag">TKL_CORE</span>
+              <span class="tag">HOT-SWAP</span>
+              <span class="tag">LINEAR_RED</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="65 gasket limited">
+          <div class="card-header">
+            <span class="serial">S/N: NV-65-ULTRA</span>
+            <span class="badge badge--limited">LIMITED</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img" style="background-image:url('keyboard-02.png')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">NeonViper 65</h2>
+              <span class="prod-price">Rp 245.000</span>
+            </div>
+            <p class="prod-desc">Compact precision for specialized workflows. Dual-mode wireless with gasket mount.</p>
+            <div class="tag-row">
+              <span class="tag">65%_COMPACT</span>
+              <span class="tag">GASKET_MOUNT</span>
+              <span class="tag">SILENT_TACTILE</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="96 full steel">
+          <div class="card-header">
+            <span class="serial">S/N: PX-96-GRID</span>
+            <span class="badge badge--stock">IN_STOCK</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img" style="background-image:url('keyboard-03.png')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">PixelGrid 96</h2>
+              <span class="prod-price">Rp 210.000</span>
+            </div>
+            <p class="prod-desc">The full numeric array for heavy data processing and grand-strategy gaming.</p>
+            <div class="tag-row">
+              <span class="tag">96%_FULL</span>
+              <span class="tag">STEEL_PLATE</span>
+              <span class="tag">CLICKY_BLUE</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="40 ortho pcb">
+          <div class="card-header">
+            <span class="serial">S/N: GH-40-PRO</span>
+            <span class="badge badge--stock">IN_STOCK</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img" style="background-image:url('images/keyboard-04.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">Ghost40 Ortho</h2>
+              <span class="prod-price">Rp 155.000</span>
+            </div>
+            <p class="prod-desc">Experimental ortholinear grid for peak typing efficiency. Minimalist footprint.</p>
+            <div class="tag-row">
+              <span class="tag">40%_ORTHO</span>
+              <span class="tag">VIA_SUPPORT</span>
+              <span class="tag">CUSTOM_LUBE</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="75 pcb carbon">
+          <div class="card-header">
+            <span class="serial">S/N: DR-75-CARBON</span>
+            <span class="badge badge--stock">IN_STOCK</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img" style="background-image:url('images/keyboard-05.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">DarkRoom 75</h2>
+              <span class="prod-price">Rp 299.000</span>
+            </div>
+            <p class="prod-desc">Integrated rotary encoder and carbon fiber switch plate. The ultimate artisan tool.</p>
+            <div class="tag-row">
+              <span class="tag">75%_KNOB</span>
+              <span class="tag">CARBON_PLATE</span>
+              <span class="tag">BOUTIQUE</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="65 rgb abs">
+          <div class="card-header">
+            <span class="serial">S/N: SL-60-CORE</span>
+            <span class="badge badge--hot">HOT_ITEM</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img" style="background-image:url('images/keyboard-06.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">Stellar60 Core</h2>
+              <span class="prod-price">Rp 129.000</span>
+            </div>
+            <p class="prod-desc">Entry-level premium. Translucent shell with 16.8M color per-key RGB lighting.</p>
+            <div class="tag-row">
+              <span class="tag">60%_BASE</span>
+              <span class="tag">RGB_PER_KEY</span>
+              <span class="tag">ABS_LITE</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /kbGrid -->
+
+      <!-- Progress bar + Load more -->
+      <div class="load-section">
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" style="width:40%"></div>
+        </div>
+        <button class="btn-load" data-grid="kbGrid">
+          LOAD_NEXT_SEQUENCE <span class="arrow">→</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         PAGE: MICE
+         ══════════════════════════════════════════════════ -->
+    <section class="shop-page" id="page-mice">
+
+      <div class="page-header">
+        <div class="breadcrumb">SUB-SYSTEM: PERIPHERALS_04</div>
+        <h1 class="page-title">PRECISION<br>INTERFACE UNITS</h1>
+        <p class="page-desc page-desc--side">Engineered for the elite. Low-latency wireless protocols met with ultra-lightweight carbon skeletons. Dominate the digital grid.</p>
+      </div>
+
+      <!-- Filter + Sort -->
+      <div class="filter-bar filter-bar--space" data-filter-group="mice">
+        <div class="filter-left">
+          <button class="filter-btn active" data-filter="all">ALL_UNITS</button>
+          <button class="filter-btn" data-filter="wireless">WIRELESS</button>
+          <button class="filter-btn" data-filter="ultralight">ULTRALIGHT</button>
+          <button class="filter-btn" data-filter="ergonomic">ERGONOMIC</button>
+        </div>
+        <div class="sort-control">
+          <span class="sort-label">≡ SORT_BY:</span>
+          <select class="sort-select" id="miceSort">
+            <option value="latency">LATENCY_DESC</option>
+            <option value="price_asc">PRICE_ASC</option>
+            <option value="price_desc">PRICE_DESC</option>
+            <option value="name">NAME_A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Product Grid 4-col -->
+      <div class="product-grid product-grid--4" id="miceGrid">
+
+        <article class="product-card product-card--compact" data-tags="wireless ultralight 24k">
+          <div class="card-header">
+            <span class="serial">S/N: 090_APEX</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-01.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Apex Glide Pro</h2>
+              <span class="prod-price">Rp 159.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">24K DPI</span>
+              <span class="tag tag--sm">WIRELESS</span>
+              <span class="tag tag--sm">54G</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="wired ultralight 20k">
+          <div class="card-header">
+            <span class="serial">S/N: 091_NEON</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-02.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Neon Skeleton</h2>
+              <span class="prod-price">Rp 129.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">20K DPI</span>
+              <span class="tag tag--sm">WIRED</span>
+              <span class="tag tag--sm">48G</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="wireless 30k">
+          <div class="card-header">
+            <span class="serial">S/N: 091_VOID</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-03.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Void Runner</h2>
+              <span class="prod-price">Rp 189.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">30K DPI</span>
+              <span class="tag tag--sm">WIRELESS</span>
+              <span class="tag tag--sm">62G</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact product-card--featured" data-tags="wireless ultralight latest">
+          <div class="card-header">
+            <span class="serial">S/N: 092_CYBER</span>
+            <span class="badge badge--latest">LATEST RELEASE</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-04.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Cyber Core X</h2>
+              <span class="prod-price">Rp 249.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm tag--magenta">MAGENTA TECH</span>
+              <span class="tag tag--sm">HYPERPOLLING</span>
+            </div>
+            <button class="btn-cart btn-cart--buy">🛒 BUY NOW</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="ergonomic wired macro">
+          <div class="card-header">
+            <span class="serial">S/N: 095_SHIFT</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-05.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Shift Ergo</h2>
+              <span class="prod-price">Rp 115.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">18K DPI</span>
+              <span class="tag tag--sm">WIRED</span>
+              <span class="tag tag--sm">MACRO_X12</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="wireless dual battery">
+          <div class="card-header">
+            <span class="serial">S/N: 371_PULSE</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-06.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Pulse Kinetic</h2>
+              <span class="prod-price">Rp 145.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">26K DPI</span>
+              <span class="tag tag--sm">DUAL_MODE</span>
+              <span class="tag tag--sm">80H BATTERY</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="ultralight silent wired">
+          <div class="card-header">
+            <span class="serial">S/N: 090_STEALTH</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-07.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Stealth Ops</h2>
+              <span class="prod-price">Rp 99.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">16K DPI</span>
+              <span class="tag tag--sm">SILENT_CLICK</span>
+              <span class="tag tag--sm">60G</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="wireless optical 26k">
+          <div class="card-header">
+            <span class="serial">S/N: 140_GLITCH</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img" style="background-image:url('images/mouse-08.svg')"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Glitch Master</h2>
+              <span class="prod-price">Rp 169.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">26K DPI</span>
+              <span class="tag tag--sm">OPTICAL_SW</span>
+              <span class="tag tag--sm">0.2MS_LATENCY</span>
+            </div>
+            <button class="btn-cart">🛒 ADD TO CART</button>
+          </div>
+        </article>
+
+      </div><!-- /miceGrid -->
+
+      <!-- Pagination + count -->
+      <div class="pagination-row">
+        <div class="pagination">
+          <button class="page-btn active" data-page="1">01</button>
+          <button class="page-btn" data-page="2">02</button>
+          <button class="page-btn" data-page="3">03</button>
+        </div>
+        <div class="inventory-count">
+          UNITS_DISPLAYED: <span id="shownCount">08</span> / TOTAL_INVENTORY: <span>142</span>
+        </div>
+      </div>
+
+    </section><!-- /mice -->
+
+    <!-- ══════════════════════════════════════════════════
+         PAGE: HEADSETS (placeholder)
+         ══════════════════════════════════════════════════ -->
+    <section class="shop-page" id="page-headsets">
+      <div class="page-header">
+        <div class="breadcrumb">SUB-SYSTEM: AUDIO_07</div>
+        <h1 class="page-title">SONIC ARRAYS</h1>
+        <p class="page-desc">High-fidelity planar magnetic and electrostatic headsets engineered for spatial dominance.</p>
+      </div>
+      <div class="coming-soon">
+        <div class="cs-icon">🎧</div>
+        <div class="cs-text">MODULE_LOADING...<br><small>HEADSET CATALOG INCOMING — ETA: 48HRS</small></div>
+        <div class="cs-bar"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         PAGE: MONITORS (placeholder)
+         ══════════════════════════════════════════════════ -->
+    <section class="shop-page" id="page-monitors">
+      <div class="page-header">
+        <div class="breadcrumb">SUB-SYSTEM: DISPLAY_02</div>
+        <h1 class="page-title">VISUAL ARRAYS</h1>
+        <p class="page-desc">OLED and Mini-LED panels calibrated for sub-millisecond response. No blur. No mercy.</p>
+      </div>
+      <div class="coming-soon">
+        <div class="cs-icon">🖥</div>
+        <div class="cs-text">MODULE_LOADING...<br><small>DISPLAY CATALOG INCOMING — ETA: 72HRS</small></div>
+        <div class="cs-bar"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        TECHNOSPACE
+      </div>
+
+      <nav class="footer-nav">
+        <a href="#">Hardware</a>
+        <a href="#">Support</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </nav>
+
+      <p class="footer-copy">
+        © 2024 TECHNOSPACE. ALL SYSTEMS OPERATIONAL.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <script src="shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechnoSpace — Register</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Navbar styles first, then page styles -->
+  <link rel="stylesheet" href="../navbar/style.css" />
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+
+
+  <main class="reg-main">
+
+    <!-- Decorative corner marks -->
+    <div class="corner corner--tl"></div>
+    <div class="corner corner--tr"></div>
+
+    <div class="reg-card">
+
+      <!-- Top accent line -->
+      <div class="card-accent-top"></div>
+
+      <!-- Card header -->
+      <div class="card-head">
+        <span class="sn-label">S/N:&nbsp;<span class="sn-val">REG-2024-SYS</span></span>
+        <h1 class="card-title">CREATE_IDENTITY</h1>
+        <p class="card-sub">Initialize your access to the TechnoSpace ecosystem.</p>
+      </div>
+
+      <!-- ── FORM ────────────────────────────────── -->
+      <form class="reg-form" id="regForm" novalidate>
+
+        <!-- Full Name -->
+        <div class="field-group" id="fg-name">
+          <label class="field-label" for="fullName">FULL NAME</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="ENTER_LEGAL_ID"
+              autocomplete="name"
+            />
+            <span class="field-status"></span>
+          </div>
+          <span class="field-error"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="field-group" id="fg-email">
+          <label class="field-label" for="email">EMAIL ADDRESS</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="NEURAL_LINK@DOMAIN.COM"
+              autocomplete="email"
+            />
+            <span class="field-status"></span>
+          </div>
+          <span class="field-error"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="field-group" id="fg-password">
+          <label class="field-label" for="password">PASSWORD</label>
+          <div class="field-wrap">
+            <input
+              class="field-input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="············"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-pw" id="togglePw" aria-label="Toggle password visibility">
+              <span class="eye-icon" id="eyeIcon">👁</span>
+            </button>
+            <span class="field-status"></span>
+          </div>
+          <!-- Password strength bar -->
+          <div class="pw-strength">
+            <div class="pw-bar" id="pwBar"></div>
+          </div>
+          <span class="field-error"></span>
+        </div>
+
+        <!-- Gender + DOB row -->
+        <div class="form-row">
+
+          <!-- Gender -->
+          <div class="field-group field-group--half" id="fg-gender">
+            <span class="field-label">GENDER</span>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="gender" value="male" />
+                <span class="radio-custom"></span>
+                Male
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="gender" value="female" />
+                <span class="radio-custom"></span>
+                Female
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="gender" value="non-binary" />
+                <span class="radio-custom"></span>
+                Non-Binary
+              </label>
+            </div>
+            <span class="field-error"></span>
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="field-group field-group--half" id="fg-dob">
+            <span class="field-label">DATE OF BIRTH</span>
+            <div class="dob-row">
+              <div class="select-wrap">
+                <select class="field-select" id="dobDay" name="dobDay">
+                  <option value="">DD</option>
+                </select>
+              </div>
+              <div class="select-wrap">
+                <select class="field-select" id="dobMonth" name="dobMonth">
+                  <option value="">MM</option>
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
+              <div class="select-wrap select-wrap--year">
+                <select class="field-select" id="dobYear" name="dobYear">
+                  <option value="">YYYY</option>
+                </select>
+              </div>
+            </div>
+            <span class="field-error"></span>
+          </div>
+
+        </div><!-- /form-row -->
+
+        <!-- Submit -->
+        <button type="submit" class="btn-submit" id="btnSubmit">
+          <span class="btn-text">INITIALIZE ACCOUNT</span>
+          <span class="btn-loader" id="btnLoader"></span>
+        </button>
+
+    </div><!-- /eg-card -->
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer class="reg-footer">
+    <div class="rf-inner">
+
+      <div class="rf-left">
+        <div class="rf-brand">TECHNOSPACE</div>
+        <p class="rf-copy">© 2024 TECHNOSPACE. ALL SYSTEMS OPERATIONAL.</p>
+      </div>
+
+      <div class="rf-cols">
+        <div class="rf-col">
+          <div class="rf-col-title">NAVIGATE</div>
+          <a href="#">Hardware</a>
+          <a href="#">Support</a>
+        </div>
+        <div class="rf-col">
+          <div class="rf-col-title">PROTOCOL</div>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+
+      <div class="rf-icons">
+        <button class="rf-icon-btn" aria-label="Video">▶</button>
+        <button class="rf-icon-btn" aria-label="Share">⇆</button>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+  <script src="register.js"></script>
+</body>
+</html>

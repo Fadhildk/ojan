@@ -1,0 +1,17 @@
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gmouse3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#0a1118;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="#0a1118"/>
+  <rect width="400" height="260" fill="url(#gmouse3)"/>
+  <g stroke="#00e5ff" stroke-width="2" fill="none">
+    <path d="M 160 85 Q 200 55 240 85 Q 240 155 200 175 Q 160 155 160 85 Z"/>
+    <polygon points="200,100 210,120 190,120" fill="none"/>
+    <circle cx="200" cy="145" r="4" fill="#00e5ff"/>
+    <line x1="200" y1="155" x2="200" y2="170" stroke-width="1.5"/>
+  </g>
+  <text x="200" y="230" font-family="Orbitron, monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle" letter-spacing="1">Void Runner</text>
+</svg>

@@ -1,0 +1,101 @@
+<!-- =====================================================
+     TECHNOSPACE NAVBAR COMPONENT
+     Usage: Include this snippet in any page via JS fetch
+     or copy-paste inside <body> before main content
+     ===================================================== -->
+<nav class="ts-navbar" id="ts-navbar">
+  <div class="ts-navbar__inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="ts-navbar__logo">
+      TechnoSpace
+    </a>
+
+    <!-- Primary Links -->
+<ul class="ts-navbar__links" id="ts-nav-links">
+  <li><a href="home.html" class="ts-nav-link">Home</a></li>
+  <li><a href="gallery.html" class="ts-nav-link">Gallery</a></li>
+  <li><a href="shop.html" class="ts-nav-link">Shop</a></li>
+  <li><a href="register.html" class="ts-nav-link">Register</a></li>
+</ul>
+
+    <!-- Right Controls -->
+    <div class="ts-navbar__controls">
+      <div class="ts-search-wrap">
+        <svg class="ts-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="ts-search-input" placeholder="Search systems..." aria-label="Search">
+      </div>
+
+      <button class="ts-icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9"  cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="ts-cart-badge">0</span>
+      </button>
+
+      <button class="ts-icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </button>
+
+      <!-- Mobile Hamburger -->
+      <button class="ts-hamburger" id="ts-hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Scan line accent -->
+  <div class="ts-navbar__scanline"></div>
+</nav>
+<!-- END NAVBAR COMPONENT -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("ts-hamburger");
+  const navLinks = document.getElementById("ts-nav-links");
+  const navbar = document.getElementById("ts-navbar");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("open");
+      navLinks.classList.toggle("open");
+
+      const expanded = hamburger.classList.contains("open");
+      hamburger.setAttribute("aria-expanded", expanded);
+    });
+
+    // close menu ketika klik link
+    document.querySelectorAll(".ts-nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("open");
+        navLinks.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // close kalau klik area luar menu
+    document.addEventListener("click", (e) => {
+      if (
+        !navbar.contains(e.target) &&
+        navLinks.classList.contains("open")
+      ) {
+        hamburger.classList.remove("open");
+        navLinks.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // navbar scroll effect
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 10);
+  });
+});
+</script>
