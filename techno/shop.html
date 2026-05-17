@@ -46,11 +46,22 @@
       </div>
 
       <!-- Filter tabs -->
-      <div class="filter-bar" data-filter-group="keyboards">
-        <button class="filter-btn active" data-filter="all">ALL_MODELS</button>
-        <button class="filter-btn" data-filter="65">65%_LAYOUT</button>
-        <button class="filter-btn" data-filter="tkl">TKL_CORE</button>
-        <button class="filter-btn" data-filter="pcb">CUSTOM_PCBS</button>
+      <div class="filter-bar filter-bar--space" data-filter-group="keyboards">
+        <div class="filter-left">
+          <button class="filter-btn active" data-filter="all">ALL_MODELS</button>
+          <button class="filter-btn" data-filter="65">65%_LAYOUT</button>
+          <button class="filter-btn" data-filter="tkl">TKL_CORE</button>
+          <button class="filter-btn" data-filter="pcb">CUSTOM_PCBS</button>
+        </div>
+        <div class="sort-control">
+          <span class="sort-label">≡ SORT_BY:</span>
+          <select class="sort-select" id="keyboardSort">
+            <option value="latency">LATENCY</option>
+            <option value="price_asc">PRICE</option>
+            <option value="price_desc">PRICE</option>
+            <option value="name">NAME_A-Z</option>
+          </select>
+        </div>
       </div>
 
       <!-- Product Grid -->
@@ -59,10 +70,10 @@
         <article class="product-card" data-tags="tkl hot-swap linear">
           <div class="card-header">
             <span class="serial">S/N: CK-0042-X</span>
-            <span class="badge badge--stock">IN_STOCK</span>
+            <span class="badge badge--stock">IN STOCK</span>
           </div>
           <div class="card-img-wrap">
-            <div class="card-img" style="background-image:url('keyboard-01.png')"></div>
+            <div class="card-img"><img src="keyboard-01.png" alt="CyberKeys TKL"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -85,7 +96,7 @@
             <span class="badge badge--limited">LIMITED</span>
           </div>
           <div class="card-img-wrap">
-            <div class="card-img" style="background-image:url('keyboard-02.png')"></div>
+            <div class="card-img"><img src="keyboard-02.png" alt="NeonViper 65"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -105,10 +116,10 @@
         <article class="product-card" data-tags="96 full steel">
           <div class="card-header">
             <span class="serial">S/N: PX-96-GRID</span>
-            <span class="badge badge--stock">IN_STOCK</span>
+            <span class="badge badge--stock">IN STOCK</span>
           </div>
           <div class="card-img-wrap">
-            <div class="card-img" style="background-image:url('keyboard-03.png')"></div>
+            <div class="card-img"><img src="keyboard-03.png" alt="PixelGrid 96"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -128,10 +139,10 @@
         <article class="product-card" data-tags="40 ortho pcb">
           <div class="card-header">
             <span class="serial">S/N: GH-40-PRO</span>
-            <span class="badge badge--stock">IN_STOCK</span>
+            <span class="badge badge--stock">IN STOCK</span>
           </div>
           <div class="card-img-wrap">
-            <div class="card-img" style="background-image:url('images/keyboard-04.svg')"></div>
+            <div class="card-img"><img src="keyboard-04.png" alt="Ghost40 Ortho"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -151,10 +162,10 @@
         <article class="product-card" data-tags="75 pcb carbon">
           <div class="card-header">
             <span class="serial">S/N: DR-75-CARBON</span>
-            <span class="badge badge--stock">IN_STOCK</span>
+            <span class="badge badge--stock">IN STOCK</span>
           </div>
           <div class="card-img-wrap">
-            <div class="card-img" style="background-image:url('images/keyboard-05.svg')"></div>
+            <div class="card-img"><img src="keyboard-05.png" alt="DarkRoom 75"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -177,7 +188,7 @@
             <span class="badge badge--hot">HOT_ITEM</span>
           </div>
           <div class="card-img-wrap">
-            <div class="card-img" style="background-image:url('images/keyboard-06.svg')"></div>
+            <div class="card-img"><img src="keyboard-06.png" alt="Stellar60 Core"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -202,14 +213,14 @@
           <div class="progress-bar" style="width:40%"></div>
         </div>
         <button class="btn-load" data-grid="kbGrid">
-          LOAD_NEXT_SEQUENCE <span class="arrow">→</span>
+          LOAD NEXT SEQUENCE <span class="arrow">→</span>
         </button>
       </div>
 
     </section>
 
     <!-- ══════════════════════════════════════════════════
-         PAGE: MICE
+         PAGE: Mouse
          ══════════════════════════════════════════════════ -->
     <section class="shop-page" id="page-mice">
 
@@ -230,9 +241,9 @@
         <div class="sort-control">
           <span class="sort-label">≡ SORT_BY:</span>
           <select class="sort-select" id="miceSort">
-            <option value="latency">LATENCY_DESC</option>
-            <option value="price_asc">PRICE_ASC</option>
-            <option value="price_desc">PRICE_DESC</option>
+            <option value="latency">LATENCY</option>
+            <option value="price_asc">PRICE</option>
+            <option value="price_desc">PRICE</option>
             <option value="name">NAME_A-Z</option>
           </select>
         </div>
@@ -246,7 +257,7 @@
             <span class="serial">S/N: 090_APEX</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-01.svg')"></div>
+            <div class="card-img"><img src="mouse-01.png" alt="Apex Glide Pro"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -268,7 +279,7 @@
             <span class="serial">S/N: 091_NEON</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-02.svg')"></div>
+            <div class="card-img"><img src="mouse-02.png" alt="Neon Skeleton"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -290,7 +301,7 @@
             <span class="serial">S/N: 091_VOID</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-03.svg')"></div>
+            <div class="card-img"><img src="mouse-03.png" alt="Void Runner"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -313,7 +324,7 @@
             <span class="badge badge--latest">LATEST RELEASE</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-04.svg')"></div>
+            <div class="card-img"><img src="mouse-04.png" alt="Cyber Core X"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -334,7 +345,7 @@
             <span class="serial">S/N: 095_SHIFT</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-05.svg')"></div>
+            <div class="card-img"><img src="mouse-05.png" alt="Shift Ergo"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -356,7 +367,7 @@
             <span class="serial">S/N: 371_PULSE</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-06.svg')"></div>
+            <div class="card-img"><img src="mouse-06.png" alt="Pulse Kinetic"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -378,7 +389,7 @@
             <span class="serial">S/N: 090_STEALTH</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-07.svg')"></div>
+            <div class="card-img"><img src="mouse-07.png" alt="Stealth Ops"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -400,7 +411,7 @@
             <span class="serial">S/N: 140_GLITCH</span>
           </div>
           <div class="card-img-wrap card-img-wrap--sm">
-            <div class="card-img" style="background-image:url('images/mouse-08.svg')"></div>
+            <div class="card-img"><img src="mouse-08.png" alt="Glitch Master"></div>
             <div class="img-overlay"></div>
           </div>
           <div class="card-body">
@@ -418,23 +429,10 @@
         </article>
 
       </div><!-- /miceGrid -->
-
-      <!-- Pagination + count -->
-      <div class="pagination-row">
-        <div class="pagination">
-          <button class="page-btn active" data-page="1">01</button>
-          <button class="page-btn" data-page="2">02</button>
-          <button class="page-btn" data-page="3">03</button>
-        </div>
-        <div class="inventory-count">
-          UNITS_DISPLAYED: <span id="shownCount">08</span> / TOTAL_INVENTORY: <span>142</span>
-        </div>
-      </div>
-
     </section><!-- /mice -->
 
     <!-- ══════════════════════════════════════════════════
-         PAGE: HEADSETS (placeholder)
+         PAGE: HEADSETS
          ══════════════════════════════════════════════════ -->
     <section class="shop-page" id="page-headsets">
       <div class="page-header">
@@ -442,15 +440,118 @@
         <h1 class="page-title">SONIC ARRAYS</h1>
         <p class="page-desc">High-fidelity planar magnetic and electrostatic headsets engineered for spatial dominance.</p>
       </div>
-      <div class="coming-soon">
-        <div class="cs-icon">🎧</div>
-        <div class="cs-text">MODULE_LOADING...<br><small>HEADSET CATALOG INCOMING — ETA: 48HRS</small></div>
-        <div class="cs-bar"></div>
+
+      <div class="filter-bar filter-bar--space" data-filter-group="headsets">
+        <div class="sort-control">
+          <span class="sort-label">≡ SORT_BY:</span>
+          <select class="sort-select" id="headsetSort">
+            <option value="latency">LATENCY</option>
+            <option value="price_asc">PRICE</option>
+            <option value="price_desc">PRICE</option>
+            <option value="name">NAME_A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="headsetGrid">
+
+        <article class="product-card" data-tags="wireless surround comfort">
+          <div class="card-header">
+            <span class="serial">S/N: HS-01-AERO</span>
+            <span class="badge badge--stock">IN STOCK</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img"><img src="headphone 01.png" alt="AeroPulse X"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">AeroPulse X</h2>
+              <span class="prod-price">Rp 279.000</span>
+            </div>
+            <p class="prod-desc">Immersive spatial audio with active noise cancellation and plush memory foam cushions.</p>
+            <div class="tag-row">
+              <span class="tag">WIRELESS</span>
+              <span class="tag">SURROUND</span>
+              <span class="tag">COMFORT</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="wired studio neutral">
+          <div class="card-header">
+            <span class="serial">S/N: HS-02-SONIC</span>
+            <span class="badge badge--latest">LATEST RELEASE</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img"><img src="headset.png" alt="SonicWave Studio"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">SonicWave Studio</h2>
+              <span class="prod-price">Rp 319.000</span>
+            </div>
+            <p class="prod-desc">Reference-grade audio for content creators, with detachable boom mic and precision tuning.</p>
+            <div class="tag-row">
+              <span class="tag">WIRED</span>
+              <span class="tag">STUDIO</span>
+              <span class="tag">NEUTRAL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="gaming rgb bass">
+          <div class="card-header">
+            <span class="serial">S/N: HS-03-BASS</span>
+            <span class="badge badge--limited">LIMITED</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img"><img src="headphone 02.png" alt="BassCore V2"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">BassCore V2</h2>
+              <span class="prod-price">Rp 249.000</span>
+            </div>
+            <p class="prod-desc">Heavy impact bass, customizable RGB lighting, and a reinforced steel headband for marathon sessions.</p>
+            <div class="tag-row">
+              <span class="tag">GAMING</span>
+              <span class="tag">RGB</span>
+              <span class="tag">BASS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-tags="hybrid noise-canceling wireless">
+          <div class="card-header">
+            <span class="serial">S/N: HS-04-ORBIT</span>
+            <span class="badge badge--stock">IN STOCK</span>
+          </div>
+          <div class="card-img-wrap">
+            <div class="card-img"><img src="headphone 03.png" alt="Orbit HZ"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name">Orbit HZ</h2>
+              <span class="prod-price">Rp 289.000</span>
+            </div>
+            <p class="prod-desc">Hybrid ANC plus wireless freedom for gamers who need clean, stable audio across every signal.</p>
+            <div class="tag-row">
+              <span class="tag">HYBRID</span>
+              <span class="tag">NOISE_CANCEL</span>
+              <span class="tag">WIRELESS</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════
-         PAGE: MONITORS (placeholder)
+         PAGE: MONITORS
          ══════════════════════════════════════════════════ -->
     <section class="shop-page" id="page-monitors">
       <div class="page-header">
@@ -458,10 +559,108 @@
         <h1 class="page-title">VISUAL ARRAYS</h1>
         <p class="page-desc">OLED and Mini-LED panels calibrated for sub-millisecond response. No blur. No mercy.</p>
       </div>
-      <div class="coming-soon">
-        <div class="cs-icon">🖥</div>
-        <div class="cs-text">MODULE_LOADING...<br><small>DISPLAY CATALOG INCOMING — ETA: 72HRS</small></div>
-        <div class="cs-bar"></div>
+
+      <div class="filter-bar filter-bar--space" data-filter-group="monitors">
+        <div class="sort-control">
+          <span class="sort-label">≡ SORT_BY:</span>
+          <select class="sort-select" id="monitorSort">
+            <option value="latency">LATENCY</option>
+            <option value="price_asc">PRICE</option>
+            <option value="price_desc">PRICE</option>
+            <option value="name">NAME_A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid product-grid--4" id="monitorGrid">
+
+        <article class="product-card product-card--compact" data-tags="oled hdr 144hz">
+          <div class="card-header">
+            <span class="serial">S/N: MN-01-NOVA</span>
+            <span class="badge badge--stock">IN STOCK</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img"><img src="monitor1.png" alt="NovaVision 27"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">NovaVision 27</h2>
+              <span class="prod-price">Rp 4.199.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">OLED</span>
+              <span class="tag tag--sm">HDR</span>
+              <span class="tag tag--sm">144HZ</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="mini-led pro 240hz">
+          <div class="card-header">
+            <span class="serial">S/N: MN-02-EDGE</span>
+            <span class="badge badge--latest">LATEST RELEASE</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img"><img src="monitor2.png" alt="EdgeStream 32"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">EdgeStream 32</h2>
+              <span class="prod-price">Rp 5.499.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">MINI-LED</span>
+              <span class="tag tag--sm">PRO</span>
+              <span class="tag tag--sm">240HZ</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact" data-tags="curved ultrawide 180hz">
+          <div class="card-header">
+            <span class="serial">S/N: MN-03-TIDE</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img"><img src="monitor3.png" alt="TideCurv 34"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">TideCurv 34</h2>
+              <span class="prod-price">Rp 5.999.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">CURVED</span>
+              <span class="tag tag--sm">ULTRAWIDE</span>
+              <span class="tag tag--sm">180HZ</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card product-card--compact product-card--featured" data-tags="g-sync 4k hdr">
+          <div class="card-header">
+            <span class="serial">S/N: MN-04-PRISM</span>
+            <span class="badge badge--hot">HOT_ITEM</span>
+          </div>
+          <div class="card-img-wrap card-img-wrap--sm">
+            <div class="card-img"><img src="monitor.png" alt="Prism 4K"></div>
+            <div class="img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <div class="name-price">
+              <h2 class="prod-name prod-name--sm">Prism 4K</h2>
+              <span class="prod-price">Rp 6.299.000</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag tag--sm">G-SYNC</span>
+              <span class="tag tag--sm">4K</span>
+              <span class="tag tag--sm">HDR</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 

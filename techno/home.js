@@ -168,9 +168,20 @@ function initHeroCarousel() {
    4. CART SYSTEM
    ---------------------------------------------------------- */
 function getCart() {
-
   try {
-    return JSON.parse(localStorage.getItem("ts_cart") || "[]");
+    const primary = localStorage.getItem("cart");
+    if (primary) return JSON.parse(primary);
+
+    // migrate legacy key if present
+    const legacy = localStorage.getItem("ts_cart");
+    if (legacy) {
+      const parsed = JSON.parse(legacy || "[]");
+      try { localStorage.setItem("cart", JSON.stringify(parsed)); } catch (e) {}
+      try { localStorage.removeItem("ts_cart"); } catch (e) {}
+      return parsed;
+    }
+
+    return [];
   } catch {
     return [];
   }
@@ -178,25 +189,22 @@ function getCart() {
 
 function saveCart(cart) {
 
-  localStorage.setItem("ts_cart", JSON.stringify(cart));
-
+  try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (e) {}
   updateCartBadge();
 }
 
 function updateCartBadge() {
+  // prefer global updater
+  if (typeof window.updateCartBadge === 'function') {
+    try { window.updateCartBadge(); return; } catch (e) {}
+  }
 
   const badge = document.querySelector(".ts-cart-badge");
-
   if (!badge) return;
-
   const cart = getCart();
-
-  const total = cart.reduce(
-    (sum, item) => sum + (item.qty || 1),
-    0
-  );
-
-  badge.textContent = total;
+  const total = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+  if (total <= 0) { badge.style.display = 'none'; badge.textContent = ''; }
+  else { badge.style.display = 'inline-block'; badge.textContent = String(total); }
 
   badge.style.display = total > 0 ? "flex" : "none";
 }
@@ -382,12 +390,9 @@ function initSearch() {
 
       const q = input.value.trim();
 
-      if (q) {
+      if (!q) return;
 
-        showToast(`Searching for: "${q}"`);
-
-        input.blur();
-      }
+      window.location.href = `shop.html?search=${encodeURIComponent(q)}`;
     }
   });
 }
@@ -398,6 +403,11 @@ function initSearch() {
 document.addEventListener("DOMContentLoaded", () => {
 
   loadNavbar().then(() => {
+
+    // Update navbar based on auth state
+    if (typeof updateNavbarAuthState === "function") {
+      updateNavbarAuthState();
+    }
 
     initHeroCarousel();
 

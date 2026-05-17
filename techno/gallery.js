@@ -97,6 +97,18 @@ function initNavbar() {
   });
 }
 
+function initSearchRedirect() {
+  const input = document.querySelector('.ts-search-input');
+  if (!input) return;
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const query = input.value.trim();
+    if (!query) return;
+    window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+  });
+}
+
 /* ----------------------------------------------------------
    3. CARD REVEAL ANIMATION
    ---------------------------------------------------------- */
@@ -291,6 +303,13 @@ function initCardClick() {
 document.addEventListener("DOMContentLoaded", async () => {
 
   await loadNavbar();
+  
+  // Update navbar based on auth state
+  if (typeof updateNavbarAuthState === "function") {
+    updateNavbarAuthState();
+  }
+  
+  initSearchRedirect();
 
   const observer = initCardReveal();
 
@@ -301,25 +320,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 /* ── Cart badge sync ───────────────────────────── */
 function updateCartBadge() {
+  // prefer global updater
+  if (typeof window.updateCartBadge === 'function') {
+    try { window.updateCartBadge(); return; } catch (e) {}
+  }
 
   const badge = document.querySelector(".ts-cart-badge");
-
   if (!badge) return;
-
   let cart = [];
-
   try {
-    cart = JSON.parse(localStorage.getItem("ts_cart") || "[]");
+    const primary = localStorage.getItem("cart");
+    if (primary) cart = JSON.parse(primary);
+    else {
+      const legacy = localStorage.getItem("ts_cart");
+      if (legacy) {
+        cart = JSON.parse(legacy);
+        try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (e) {}
+        try { localStorage.removeItem("ts_cart"); } catch (e) {}
+      }
+    }
   } catch {}
-
-  const total = cart.reduce(
-    (sum, item) => sum + (item.qty || 1),
-    0
-  );
-
-  badge.textContent = total;
-
-  badge.style.display = total > 0 ? "flex" : "none";
+  const total = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+  if (total <= 0) { badge.style.display = 'none'; badge.textContent = ''; }
+  else { badge.textContent = String(total); badge.style.display = 'flex'; }
 }
 
 updateCartBadge();

@@ -201,12 +201,12 @@ function updateInventoryCount() {
 
   if (!el) return;
 
-  const grid = document.getElementById('miceGrid');
+  const activePage = document.querySelector('.shop-page.active');
+  if (!activePage) return;
 
-  const visible =
-    grid.querySelectorAll(
-      '.product-card:not([data-hidden])'
-    ).length;
+  const visible = activePage.querySelectorAll(
+    '.product-card:not([data-hidden])'
+  ).length;
 
   el.textContent =
     String(visible).padStart(2, '0');
@@ -217,37 +217,39 @@ function updateInventoryCount() {
    4. SORT
    ══════════════════════════════════════════════════════════ */
 
-const sortSelect =
-  document.getElementById('miceSort');
+const sortSelects =
+  document.querySelectorAll('.sort-select');
 
-if (sortSelect) {
+function getSortGrid(select) {
+  if (!select) return null;
+  if (select.id === 'miceSort') return document.getElementById('miceGrid');
+  if (select.id === 'keyboardSort') return document.getElementById('kbGrid');
+  if (select.id === 'headsetSort') return document.getElementById('headsetGrid');
+  if (select.id === 'monitorSort') return document.getElementById('monitorGrid');
+  return null;
+}
 
-  sortSelect.addEventListener('change', () => {
+const getPrice = card => {
+  const el = card.querySelector('.prod-price');
+  return Number((el?.textContent || '').replace(/[^0-9]/g, '')) || 0;
+};
 
-    const val  = sortSelect.value;
+const getName = card =>
+  card.querySelector('.prod-name')
+    ?.textContent.trim() || '';
 
-    const grid =
-      document.getElementById('miceGrid');
+sortSelects.forEach(select => {
+  select.addEventListener('change', () => {
+    const val = select.value;
+    const grid = getSortGrid(select);
+
+    if (!grid) return;
 
     const cards = Array.from(
       grid.querySelectorAll('.product-card')
     );
 
-    const getPrice = card => {
-
-      const el = card.querySelector('.prod-price');
-
-      return parseFloat(
-        el?.textContent.replace(/[^0-9.]/g, '') || 0
-      );
-    };
-
-    const getName = card =>
-      card.querySelector('.prod-name')
-        ?.textContent.trim() || '';
-
     cards.sort((a, b) => {
-
       if (val === 'price_asc') {
         return getPrice(a) - getPrice(b);
       }
@@ -260,77 +262,84 @@ if (sortSelect) {
         return getName(a).localeCompare(getName(b));
       }
 
-      const aHyper =
+      const aLatest =
         a.dataset.tags?.includes('latest') ? -1 : 0;
-
-      const bHyper =
+      const bLatest =
         b.dataset.tags?.includes('latest') ? -1 : 0;
 
-      return aHyper - bHyper;
+      return aLatest - bLatest;
     });
 
     cards.forEach(card => grid.appendChild(card));
   });
-}
+});
 
 
 /* ══════════════════════════════════════════════════════════
    5. SEARCH
    ══════════════════════════════════════════════════════════ */
 
-const searchInput =
-  document.getElementById('searchInput');
+function getSearchInput() {
+  return document.querySelector('.ts-search-input');
+}
 
-if (searchInput) {
+function getSearchQueryFromUrl() {
+  return new URLSearchParams(window.location.search).get('search')?.trim() || '';
+}
 
-  searchInput.addEventListener('input', () => {
+function filterShopCards(query) {
+  const q = query.toLowerCase().trim();
+  const cards = document.querySelectorAll('.shop-page .product-card');
 
-    const q =
-      searchInput.value.toLowerCase().trim();
+  cards.forEach(card => {
+    const name = card.querySelector('.prod-name')?.textContent.toLowerCase() || '';
+    const desc = card.querySelector('.prod-desc')?.textContent.toLowerCase() || '';
+    const tags = Array.from(card.querySelectorAll('.tag'))
+      .map(t => t.textContent.toLowerCase())
+      .join(' ');
 
-    const activePage =
-      document.querySelector('.shop-page.active');
-
-    if (!activePage) return;
-
-    const cards =
-      activePage.querySelectorAll('.product-card');
-
-    cards.forEach(card => {
-
-      const name =
-        card.querySelector('.prod-name')
-          ?.textContent.toLowerCase() || '';
-
-      const desc =
-        card.querySelector('.prod-desc')
-          ?.textContent.toLowerCase() || '';
-
-      const tags =
-        Array.from(card.querySelectorAll('.tag'))
-          .map(t => t.textContent.toLowerCase())
-          .join(' ');
-
-      const match =
-        name.includes(q) ||
-        desc.includes(q) ||
-        tags.includes(q);
-
-      card[
-        match || q === ''
-          ? 'removeAttribute'
-          : 'setAttribute'
-      ]('data-hidden', '');
-    });
-
-    updateInventoryCount();
+    const match = name.includes(q) || desc.includes(q) || tags.includes(q);
+    if (match || q === '') {
+      card.removeAttribute('data-hidden');
+    } else {
+      card.setAttribute('data-hidden', '');
+    }
   });
+
+  updateInventoryCount();
+}
+
+function initSearch() {
+  const input = getSearchInput();
+  if (!input) return;
+
+  const applyUrlQuery = () => {
+    const query = getSearchQueryFromUrl();
+    if (!query) return;
+    input.value = query;
+    filterShopCards(query);
+  };
+
+  input.addEventListener('input', () => {
+    filterShopCards(input.value);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const query = input.value.trim();
+    filterShopCards(query);
+    const url = query ? `shop.html?search=${encodeURIComponent(query)}` : 'shop.html';
+    history.replaceState(null, '', url);
+  });
+
+  applyUrlQuery();
 }
 
 
 /* ══════════════════════════════════════════════════════════
    6. LOAD MORE
-   ══════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════ */
 
 const btnLoad =
   document.querySelector('.btn-load');
@@ -368,12 +377,13 @@ if (btnLoad) {
 
       appendKeyboardCards();
 
+      ensureCartButtons();
       revealCards();
 
       btnLoad.disabled = false;
 
       if (text) {
-        text.textContent = 'LOAD_NEXT_SEQUENCE';
+        text.textContent = 'all are already open';
       }
 
       if (progressBar) {
@@ -407,9 +417,9 @@ function appendKeyboardCards() {
       serial:'TH-80-ECHO',
       badge:'IN_STOCK',
       badgeCls:'badge--stock',
-      img:'keyboard2.png',
+      img:'keyboard.png',
       name:'ThermalEcho 80',
-      price:'$175.00',
+      price:'Rp 175.000',
       desc:'Silicone dampened base with south-facing PCB.',
       tags:'75 pcb carbon',
       tagsHtml:`
@@ -423,9 +433,9 @@ function appendKeyboardCards() {
       serial:'VM-60-GHOST',
       badge:'LIMITED',
       badgeCls:'badge--limited',
-      img:'keyboard3.png',
+      img:'keyboard-01.png',
       name:'VoidMatrix 60',
-      price:'$320.00',
+      price:'Rp 320.000',
       desc:'Custom anodised aluminum top.',
       tags:'65 pcb',
       tagsHtml:`
@@ -439,9 +449,9 @@ function appendKeyboardCards() {
       serial:'AP-TKL-ZERO',
       badge:'IN_STOCK',
       badgeCls:'badge--stock',
-      img:'keyboard4.png',
+      img:'keyboard-02.png',
       name:'AlphaProof TKL',
-      price:'$199.00',
+      price:'Rp 199.000',
       desc:'Gasket mount TKL with soft thocky output.',
       tags:'tkl hot-swap',
       tagsHtml:`
@@ -475,9 +485,8 @@ function appendKeyboardCards() {
 
       <div class="card-img-wrap">
 
-        <div
-          class="card-img"
-          style="background-image:url('${d.img}')">
+        <div class="card-img">
+          <img src="${d.img}" alt="${d.name}" />
         </div>
 
         <div class="img-overlay"></div>
@@ -601,8 +610,62 @@ document.addEventListener('click', e => {
     card?.querySelector('.prod-price')
       ?.textContent || '';
 
-  showToast(`${name} — ${price} ADDED`);
+  const image =
+    card?.querySelector('.card-img img')
+      ?.getAttribute('src') || '';
+
+  const cartItem = {
+    name,
+    price,
+    image,
+  };
+
+  addToCart(cartItem);
+  showToast(`${name} added to cart`);
 });
+
+function getCartItems() {
+  return JSON.parse(
+    localStorage.getItem('cart') || '[]'
+  );
+}
+
+function setCartItems(items) {
+  localStorage.setItem('cart', JSON.stringify(items));
+}
+
+function addToCart(item) {
+  const cart = getCartItems();
+  cart.push(item);
+  setCartItems(cart);
+  updateCartBadge();
+}
+
+function updateCartBadge() {
+  // delegate to global badge updater when available
+  if (typeof window.updateCartBadge === 'function' && window.updateCartBadge !== updateCartBadge) {
+    try { window.updateCartBadge(); return; } catch (e) {}
+  }
+
+  const badge = document.querySelector('.ts-cart-badge');
+  if (!badge) return;
+  const cart = getCartItems();
+  const qty = (cart || []).reduce((s,i) => s + (Number(i.quantity) || 1), 0);
+  if (qty <= 0) { badge.style.display = 'none'; badge.textContent = ''; }
+  else { badge.style.display = 'inline-block'; badge.textContent = String(qty); }
+}
+
+function ensureCartButtons() {
+  document.querySelectorAll('.product-card').forEach(card => {
+    if (card.querySelector('.btn-cart')) return;
+    const tagRow = card.querySelector('.tag-row');
+    if (!tagRow) return;
+    const button = document.createElement('button');
+    button.className = 'btn-cart';
+    button.textContent = '🛒 ADD TO CART';
+    tagRow.insertAdjacentElement('afterend', button);
+  });
+}
 
 function showToast(msg) {
 
@@ -677,6 +740,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await loadNavbar();
 
+  // Update navbar based on auth state
+  if (typeof updateNavbarAuthState === "function") {
+    updateNavbarAuthState();
+  }
+
+  initSearch();
+  updateCartBadge();
+  ensureCartButtons();
   revealCards();
 
   updateInventoryCount();

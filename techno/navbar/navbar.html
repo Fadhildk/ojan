@@ -16,32 +16,23 @@
   <li><a href="index.html" class="ts-nav-link">Home</a></li>
   <li><a href="gallery.html" class="ts-nav-link">Gallery</a></li>
   <li><a href="shop.html" class="ts-nav-link">Shop</a></li>
-  <li><a href="register.html" class="ts-nav-link">Register</a></li>
+  <li id="registerNavItem"><a href="register.html" class="ts-nav-link">Register</a></li>
 </ul>
-
-    <!-- Right Controls -->
     <div class="ts-navbar__controls">
       <div class="ts-search-wrap">
         <svg class="ts-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" class="ts-search-input" placeholder="Search systems..." aria-label="Search">
+        <input id="searchInput" type="text" class="ts-search-input" placeholder="Search systems..." aria-label="Search">
       </div>
 
-      <button class="ts-icon-btn" aria-label="Cart">
+      <a href="cart.html" class="ts-icon-btn" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9"  cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        <span class="ts-cart-badge">0</span>
-      </button>
-
-      <button class="ts-icon-btn" aria-label="Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </button>
+        <span class="ts-cart-badge" style="display:none" aria-hidden="true"></span>
+      </a>
 
       <!-- Mobile Hamburger -->
       <button class="ts-hamburger" id="ts-hamburger" aria-label="Menu" aria-expanded="false">
@@ -98,4 +89,166 @@ document.addEventListener("DOMContentLoaded", () => {
     navbar.classList.toggle("scrolled", window.scrollY > 10);
   });
 });
+
+/* ----------------------------------------------------------
+   Auth State Management
+   - Update navbar based on login status
+   - Handle profile dropdown
+   - Handle logout
+   ---------------------------------------------------------- */
+function updateNavbarAuthState() {
+  const registerItem = document.getElementById("registerNavItem");
+  const profileContainer = document.getElementById("tsProfileContainer");
+  const guestProfileBtn = document.getElementById("tsGuestProfileBtn");
+  const logoutBtn = document.getElementById("tsLogoutBtn");
+  const profileBtn = document.getElementById("tsProfileBtn");
+  const profileDropdown = document.getElementById("tsProfileDropdown");
+  
+  const user = getUserData();
+  const isLoggedIn = user && user.loggedIn === true;
+  
+  if (isLoggedIn && user) {
+    // Show logged-in UI
+    if (registerItem) registerItem.style.display = "none";
+    if (profileContainer) profileContainer.style.display = "flex";
+    if (guestProfileBtn) guestProfileBtn.style.display = "none";
+    
+    // Update profile info
+    const profileName = document.getElementById("tsProfileName");
+    const profileEmail = document.getElementById("tsProfileEmail");
+    if (profileName) profileName.textContent = user.name || "User";
+    if (profileEmail) profileEmail.textContent = user.email || "user@domain.com";
+    
+    // Setup profile dropdown toggle
+    if (profileBtn && profileDropdown) {
+      profileBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isVisible = profileDropdown.style.display !== "none";
+        profileDropdown.style.display = isVisible ? "none" : "block";
+      });
+      
+      // Close dropdown when clicking elsewhere
+      document.addEventListener("click", (e) => {
+        if (!profileContainer.contains(e.target)) {
+          profileDropdown.style.display = "none";
+        }
+      });
+    }
+    
+    // Setup logout
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", handleLogout);
+    }
+  } else {
+    // Show guest UI
+    if (registerItem) registerItem.style.display = "block";
+    if (profileContainer) profileContainer.style.display = "none";
+    if (guestProfileBtn) guestProfileBtn.style.display = "flex";
+  }
+}
+
+function getUserData() {
+  try {
+    const user = localStorage.getItem("tsUser");
+    if (!user) return null;
+    return JSON.parse(user);
+  } catch {
+    return null;
+  }
+}
+
+function handleLogout() {
+  try {
+    const user = getUserData();
+    if (user) {
+      user.loggedIn = false;
+      localStorage.setItem("tsUser", JSON.stringify(user));
+    }
+  } catch {}
+  
+  location.href = "index.html";
+}
+
+// Expose functions globally
+window.updateNavbarAuthState = updateNavbarAuthState;
+window.handleLogout = handleLogout;
+
+// Initialize auth state on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateNavbarAuthState();
+});
+
+/* ----------------------------------------------------------
+   Cart badge updater (global)
+   - keeps badge hidden when cart is empty
+   - shows total quantity when items exist
+   - updates on storage events and via light polling
+   ---------------------------------------------------------- */
+(function(){
+  let _lastCartJson = null;
+
+  function updateNavbarCartBadge(){
+    let badge = document.querySelector('.ts-cart-badge');
+    if (!badge) {
+      // create badge and attach to cart icon if possible
+      const cartIcon = document.querySelector('.ts-icon-btn[aria-label="Cart"]');
+      if (cartIcon) {
+        badge = document.createElement('span');
+        badge.className = 'ts-cart-badge';
+        badge.setAttribute('aria-hidden', 'true');
+        badge.style.display = 'none';
+        cartIcon.appendChild(badge);
+      } else {
+        return;
+      }
+    }
+
+    const cartJson = localStorage.getItem('cart');
+    if (!cartJson) {
+      badge.style.display = 'none';
+      badge.textContent = '';
+      _lastCartJson = cartJson;
+      return;
+    }
+
+    try{
+      const items = JSON.parse(cartJson) || [];
+      let qty = 0;
+      if (Array.isArray(items)) {
+        items.forEach(it => { qty += Number(it.quantity || 1); });
+      }
+      if (qty <= 0) {
+        badge.style.display = 'none';
+        badge.textContent = '';
+      } else {
+        badge.textContent = String(qty);
+        badge.style.display = 'inline-block';
+      }
+    } catch (e) {
+      badge.style.display = 'none';
+      badge.textContent = '';
+    }
+
+    _lastCartJson = cartJson;
+  }
+
+  // expose globally so other scripts may call it if needed
+  window.updateNavbarCartBadge = updateNavbarCartBadge;
+  // primary global name requested by project
+  window.updateCartBadge = updateNavbarCartBadge;
+
+  // update on storage events (other tabs)
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'cart') updateNavbarCartBadge();
+  });
+
+  // light polling to catch same-page localStorage writes
+  setInterval(() => {
+    const current = localStorage.getItem('cart');
+    if (current !== _lastCartJson) updateNavbarCartBadge();
+  }, 600);
+
+  // initial run
+  updateNavbarCartBadge();
+})();
 </script>

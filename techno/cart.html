@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechnoSpace — Cart</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="navbar/style.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+  <main class="shop-main">
+
+    <div class="page-header">
+      <div class="breadcrumb">CHECKOUT / CART</div>
+      <h1 class="page-title">SHOPPING CART</h1>
+      <p class="page-desc">Review your selected gear, update quantities, or clear the cart before checkout.</p>
+    </div>
+
+    <section class="shop-page active" id="page-cart">
+      <div class="pagination-row" style="margin-bottom: 24px; gap: 16px;">
+        <div class="inventory-count">ITEMS_IN_CART: <span id="cartCount">00</span></div>
+        <div class="inventory-count">TOTAL_PRICE: <span id="cartTotal">Rp 0</span></div>
+      </div>
+
+      <!-- Cart items list (rendered by cart.js) -->
+      <div class="product-grid" id="cartItems" style="display:block; gap:16px; margin-bottom:18px;"></div>
+
+      <div id="emptyCartMessage" class="coming-soon" style="display: none; padding: 48px 0;">
+        <div class="cs-icon">🛒</div>
+        <div class="cs-text">YOUR CART IS EMPTY.<br><small>Add items from shop to see them here.</small></div>
+        <a href="shop.html" class="btn-load" style="margin-top: 18px;">START_SHOPPING</a>
+        <div class="cs-bar"></div>
+      </div>
+
+      <div class="pagination-row" id="cartActions" style="margin-bottom: 28px; gap: 14px; display: flex; flex-wrap: wrap;">
+        <button class="btn-load" id="clearCartBtn">CLEAR_CART</button>
+        <a href="shop.html" class="btn-load">CONTINUE_SHOPPING</a>
+        <a href="index.html" class="btn-load">BACK_TO_HOME</a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        TECHNOSPACE
+      </div>
+      <nav class="footer-nav">
+        <a href="#">Hardware</a>
+        <a href="#">Support</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </nav>
+      <p class="footer-copy">
+        © 2024 TECHNOSPACE. ALL SYSTEMS OPERATIONAL.
+      </p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>
